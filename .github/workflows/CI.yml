@@ -94,3 +94,24 @@ jobs:
 
       - name: Test frontend
         run: npm test -w frontend
+
+  create-release-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
