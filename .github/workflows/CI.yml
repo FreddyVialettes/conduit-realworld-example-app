@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: Build backend
-        run: npm run start -w backend
+        run: npm run build -w backend
 
   build-frontend:
     runs-on: ubuntu-latest
