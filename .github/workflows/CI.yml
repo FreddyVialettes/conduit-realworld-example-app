@@ -33,7 +33,7 @@ jobs:
           cache: 
             
       - name: Installation des dépendances
-        run: npm install -w backend
+        run: npm install
 
       - name: Lint
         run: npm run lint -w backend
@@ -51,7 +51,7 @@ jobs:
           cache: npm
 
       - name: Installation des dépendances
-        run: npm install -w backend
+        run: npm install
 
       - name: Test
         run: npm test -w backend
