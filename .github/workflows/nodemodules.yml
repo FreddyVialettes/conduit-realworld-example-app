@@ -2,8 +2,7 @@ name: Cache node modules
 runs:
   using: "composite"
   steps:
-    - name : Cache node modules 
-        id: cache-nodemodules
+    - name : Cache node modules
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
