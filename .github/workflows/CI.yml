@@ -5,7 +5,7 @@ on:
     branches:
       - main
 jobs:
-  build:
+  build-backend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,7 +20,28 @@ jobs:
       - name: Installation des dépendances
         run: npm install
 
-  lint:
+      - name: Build backend
+          run: npm run start -w backend
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.11.x
+          cache: npm
+
+      - name: Installation des dépendances
+        run: npm install
+
+      - name: Build backend
+          run: npm run start -w frontend
+
+  lint-backend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,7 +59,25 @@ jobs:
       - name: Lint
         run: npm run lint -w backend
 
-  test:
+  lint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.11.x
+          cache: 
+            
+      - name: Installation des dépendances
+        run: npm install
+
+      - name: Lint
+        run: npm run lint -w frontend
+
+  test-backend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -55,3 +94,21 @@ jobs:
 
       - name: Test
         run: npm test -w backend
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.11.x
+          cache: npm
+
+      - name: Installation des dépendances
+        run: npm install
+
+      - name: Test
+        run: npm test -w frontend
