@@ -30,7 +30,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.11.x
-          cache: npm
+          cache: 
+            
+      - name: Installation des dépendances
+        run: npm install -w backend
 
       - name: Lint
         run: npm run lint -w backend
@@ -46,6 +49,9 @@ jobs:
         with:
           node-version: 18.11.x
           cache: npm
+
+      - name: Installation des dépendances
+        run: npm install -w backend
 
       - name: Test
         run: npm test -w backend
