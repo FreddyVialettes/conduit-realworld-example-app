@@ -25,7 +25,6 @@ jobs:
             ${{ runner.os }}-
 
       - name: Installation des dépendances
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Build backend
