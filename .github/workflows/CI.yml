@@ -33,6 +33,7 @@ jobs:
           cache: npm
 
       - name: Lint
+        working-directory: ./backend
         run: npm run lint
 
   test:
@@ -48,4 +49,5 @@ jobs:
           cache: npm
 
       - name: Test
+        working-directory: ./backend
         run: npm test
