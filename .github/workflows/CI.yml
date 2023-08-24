@@ -98,7 +98,7 @@ jobs:
           path: ./backend
 
       - name : Zip folder
-        run: zip -r ./backend
+        run: zip -r /backend
 
       - name: Create release
         uses: meeDamian/github-release@2.0
