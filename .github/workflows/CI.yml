@@ -16,6 +16,12 @@ jobs:
       - name: Build backend
         run: npm run build -w backend
 
+      - name : Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend-artifact
+          path: ./backend
+
   build-frontend:
     runs-on: ubuntu-latest
     steps:
@@ -85,9 +91,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Zip frontend
-        run: zip -r frontend.zip 
-        working-directory: ./frontend/dist
+      - name : Download backend artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: backend-artifact
+          path: ./backend
 
       - name: Create release
         uses: elgohr/Github-Release-Action@v4
