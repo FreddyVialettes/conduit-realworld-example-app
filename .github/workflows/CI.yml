@@ -78,7 +78,8 @@ jobs:
 
   create-release-backend:
     needs: [build-backend, lint-backend, test-backend]
-    permissions: read-all|write-all
+    permissions:
+      contents: write
     name: Create release
     runs-on: ubuntu-latest
     steps:
