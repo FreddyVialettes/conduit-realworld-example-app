@@ -96,5 +96,4 @@ jobs:
             Changes in this release
             - First Change
             - Second Change
-          draft: false
           prerelease: false
