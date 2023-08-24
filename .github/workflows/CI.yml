@@ -77,6 +77,7 @@ jobs:
         run: npm test -w frontend
 
   create-release-backend:
+    permissions: write-all
     name: Create release
     runs-on: ubuntu-latest
     steps:
