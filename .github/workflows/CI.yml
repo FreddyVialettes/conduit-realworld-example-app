@@ -98,7 +98,7 @@ jobs:
           path: ./backend
 
       - name: Create release
-        - uses: meeDamian/github-release@2.0
-          with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            files: backend-artifact
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: backend-artifact
