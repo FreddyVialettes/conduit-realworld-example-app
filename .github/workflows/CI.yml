@@ -78,16 +78,14 @@ jobs:
 
   create-release-backend:
     needs: [build-backend, lint-backend, test-backend]
-    permissions: write-all
     name: Create release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Create release
         uses: elgohr/Github-Release-Action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          title: MyReleaseMessage 
+          title: MyReleaseMessage
