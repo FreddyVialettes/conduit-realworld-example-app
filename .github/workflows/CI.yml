@@ -102,3 +102,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: backend-artifact
+          tag: ${{ env.TAG }}
