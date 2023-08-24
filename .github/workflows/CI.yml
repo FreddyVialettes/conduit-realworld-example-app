@@ -103,16 +103,17 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: backend-artifact
-          path: backend/dist
+          path: bin/backend
 
       - name : Download frontend artifact
         uses: actions/download-artifact@v3
         with:
           name: frontend-artifact
-          path: frontend/dist
+          path: bin/frontend
 
       - name : Zip folder
-        run: zip -r dist.zip backend/dist frontend/dist
+        run: zip -r dist.zip *
+        working-directory: bin/
 
       - name: Create release
         uses: softprops/action-gh-release@v1
