@@ -113,8 +113,7 @@ jobs:
         run: zip -r dist.zip backend/dist frontend/dist
 
       - name: Create release
-        uses: meeDamian/github-release@2.0
+        uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: backend-artifact
-          tag: ${{ env.TAG }}
+          files: dist.zip
