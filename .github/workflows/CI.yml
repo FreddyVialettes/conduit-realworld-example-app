@@ -1,26 +1,17 @@
 name: Intégration continue
-run-name : ${{github.actor}} is testing out GitHub Actions 🚀
 on:
   push:
     branches:
       - main
-    tags:
-      - 'v*'
-
-name : Create release
 
 jobs:
   build-backend:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name : Cache node modules 
-        uses : ./.github/actions/nodemodules
-
-      - name: Installation des dépendances
-        run: npm install
+      - name : Setup node 
+        uses : ./.github/actions/setup
 
       - name: Build backend
         run: npm run build -w backend
@@ -29,13 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@
 
-      - name : Cache node modules 
-        uses : ./.github/actions/nodemodules
-
-      - name: Installation des dépendances
-        run: npm install
+      - name : Setup node
+        uses : ./.github/actions/setup
 
       - name: Build frontend
         run: npm run build -w frontend
@@ -46,11 +34,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name : Cache node modules 
-        uses : ./.github/actions/nodemodules
-            
-      - name: Installation des dépendances
-        run: npm install
+      - name : Setup node 
+        uses : ./.github/actions/setup
 
       - name: Lint backend
         run: npm run lint -w backend
@@ -60,12 +45,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-          
-      - name : Cache node modules 
-        uses : ./.github/actions/nodemodules
-            
-      - name: Installation des dépendances
-        run: npm install
+
+      - name : Setup node
+        uses : ./.github/actions/setup
 
       - name: Lint frontend
         run: npm run lint -w frontend
@@ -76,11 +58,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name : Cache node modules 
-        uses : ./.github/actions/nodemodules
-
-      - name: Installation des dépendances
-        run: npm install
+      - name : Setup node
+        uses : ./.github/actions/setup
 
       - name: Test backend
         run: npm test -w backend
@@ -91,11 +70,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name : Cache node modules 
-        uses : ./.github/actions/nodemodules
-
-      - name: Installation des dépendances
-        run: npm install
+      - name : Setup node 
+        uses : ./.github/actions/setup
 
       - name: Test frontend
         run: npm test -w frontend
