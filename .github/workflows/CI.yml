@@ -77,6 +77,7 @@ jobs:
         run: npm test -w frontend
 
   create-release-backend:
+    needs: [build-backend, lint-backend, test-backend]
     permissions: write-all
     name: Create release
     runs-on: ubuntu-latest
@@ -85,15 +86,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
+        uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this release
-            - First Change
-            - Second Change
-          prerelease: false
