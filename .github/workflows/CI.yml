@@ -16,11 +16,11 @@ jobs:
       - name: Build backend
         run: npm run build -w backend
 
-      - name : Upload artifact
+      - name : Upload artifact backend
         uses: actions/upload-artifact@v3
         with:
           name: backend-artifact
-          path: ./backend
+          path: ./backend/dist
 
   build-frontend:
     runs-on: ubuntu-latest
@@ -33,6 +33,12 @@ jobs:
 
       - name: Build frontend
         run: npm run build -w frontend
+
+      - name : Upload artifact frontend
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-artifact
+          path: ./frontend/dist
 
   lint-backend:
     runs-on: ubuntu-latest
@@ -95,10 +101,16 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: backend-artifact
-          path: ./backend
+          path: ./backend/dist
+
+      - name : Download frontend artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend-artifact
+          path: ./frontend/dist
 
       - name : Zip folder
-        run: zip -r dist.zip backend
+        run: zip -r dist.zip backend/dist frontend/dist
 
       - name: Create release
         uses: meeDamian/github-release@2.0
