@@ -85,8 +85,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Zip backend
-        run: zip -r backend.zip dist
+      - name: Zip frontend
+        run: zip -r frontend.zip frontend/dist
 
       - name: Create release
         uses: elgohr/Github-Release-Action@v4
