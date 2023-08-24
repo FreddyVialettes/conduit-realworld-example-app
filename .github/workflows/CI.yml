@@ -76,14 +76,17 @@ jobs:
       - name: Test frontend
         run: npm test -w frontend
 
-  create-release-backend:
-    needs: [build-backend, lint-backend, test-backend]
+  create-release:
+    needs: [build-backend, lint-backend, test-backend, build-frontend, lint-frontend, test-frontend]
     permissions:
       contents: write
     name: Create release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Zip backend folder
+        run: zip -r ${{ github.event.repository.name }}.zip -w backend
 
       - name: Create release
         uses: elgohr/Github-Release-Action@v4
