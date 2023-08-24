@@ -117,3 +117,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: dist.zip
+          tag_name: ${{ env.GITHUB_REF_NAME }}
