@@ -85,9 +85,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Zip backend
+        run: zip -r backend.zip frontend/dist
+
       - name: Create release
         uses: elgohr/Github-Release-Action@v4
-        run: zip -r backend.zip frontend/dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
