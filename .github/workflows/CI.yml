@@ -87,7 +87,7 @@ jobs:
 
       - name: Zip frontend
         run: zip -r frontend.zip 
-        working-directory: frontend/dist
+        working-directory: ./frontend/dist
 
       - name: Create release
         uses: elgohr/Github-Release-Action@v4
