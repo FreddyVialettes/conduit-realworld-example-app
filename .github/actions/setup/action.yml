@@ -20,5 +20,4 @@ runs:
           ${{ runner.os }}-
 
     - name: Installation des dépendances
-      shell: bash
       run: npm install
