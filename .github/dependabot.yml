@@ -1,0 +1,16 @@
+version: 2
+updates : 
+
+  # Maintien de la dépendance de GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: 
+      interval: "weekly"
+
+  # Maintien de la dépendance de npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule: 
+      interval: "weekly"
+    # Désactive les montées de version mais garde les maj de sécurité
+    open-pull-requests-limit: 0
