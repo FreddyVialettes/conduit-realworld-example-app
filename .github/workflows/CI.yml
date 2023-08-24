@@ -112,7 +112,7 @@ jobs:
       - name : Zip folder
         run: zip -r dist.zip backend/dist frontend/dist
 
-      - name: Create release 
+      - name: Create release
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
